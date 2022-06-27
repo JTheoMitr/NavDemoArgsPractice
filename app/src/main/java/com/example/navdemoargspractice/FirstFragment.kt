@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.navdemoargspractice.databinding.FragmentFirstBinding
 
@@ -45,9 +46,19 @@ class FirstFragment : Fragment() {
                 mobile.isEmpty() -> {
                     Toast.makeText(activity, "Enter Mobile Number.", Toast.LENGTH_LONG).show()
                 }
+                else -> {
+                    val bundle = bundleOf(
+                        "name" to firstName,
+                        "mobile" to mobile.toLong()
+                    )
+                    findNavController().navigate(
+                        R.id.action_FirstFragment_to_SecondFragment,
+                        bundle
+                    )
+                }
             }
 
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+
         }
     }
 
