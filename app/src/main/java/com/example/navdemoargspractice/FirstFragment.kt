@@ -51,6 +51,7 @@ class FirstFragment : Fragment() {
                         "name" to firstName,
                         "mobile" to mobile.toLong()
                     )
+                    // overriding the navigate method to include and pass the bundle I've created to Second Fragment
                     findNavController().navigate(
                         R.id.action_FirstFragment_to_SecondFragment,
                         bundle
