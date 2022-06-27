@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.navdemoargspractice.databinding.FragmentFirstBinding
 
@@ -32,7 +33,20 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
+        binding.btnVerifyDetails.setOnClickListener {
+
+            val firstName = binding.etFirstName.text.toString()
+            val mobile = binding.etMobile.text.toString()
+
+            when {
+                firstName.isEmpty() -> {
+                    Toast.makeText(activity, "Enter Name.", Toast.LENGTH_LONG).show()
+                }
+                mobile.isEmpty() -> {
+                    Toast.makeText(activity, "Enter Mobile Number.", Toast.LENGTH_LONG).show()
+                }
+            }
+
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
